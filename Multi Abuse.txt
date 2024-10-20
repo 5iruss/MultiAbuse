@@ -1,0 +1,4 @@
+@echo off
+cls
+python "C:\Users\Your directory"
+pause
