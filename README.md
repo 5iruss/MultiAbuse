@@ -1,10 +1,10 @@
 ## How to run
-- **1** change the directory path in "Multi Abuse.tct"
-- **2** change the file format from ".txt" to ".bat" and run the ".bat" file.
+- **** change the directory path in "Multi Abuse.tct"
+- **** change the file format from ".txt" to ".bat" and run the ".bat" file.
 
 
 
-##A pp Overview
+## App Overview
 
 This app is a powerful tool for executing targeted SMS bombing, call bombing, and account reporting on platforms like Instagram and Rubika. With a sleek terminal interface, users can select from multiple features, including:
 
@@ -13,7 +13,7 @@ This app is a powerful tool for executing targeted SMS bombing, call bombing, an
 - **Instagram Reporter**: Mass-report a specified Instagram account.
 - **Rubika Reporter**: Report a Rubika account at scale.
 
-### Key Features:
+## Key Features:
 - **Password Protection**: Ensures only authorized users can access the app.
 - **Dynamic Performance**: Actions are executed with real-time delays and random outcomes.
 - **User-Friendly Interface**: Clean, colorful terminal output for seamless navigation.
