@@ -1,6 +1,6 @@
 ## How to run
-- **** change the directory path in "Multi Abuse.tct"
-- **** change the file format from ".txt" to ".bat" and run the ".bat" file.
+-  Change the directory path in "Multi Abuse.tct"
+-  Change the file format from ".txt" to ".bat" and run the ".bat" file.
 
 
 
