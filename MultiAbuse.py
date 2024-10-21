@@ -32,19 +32,18 @@ def verify_password():
             print(Fore.RED + "Incorrect password! Please try again.")
     return False
 
-def random_success_failure():
-    duration = random.randint(30, 90)
+def random_success_failure(amount):
     success_count = 0
     failure_count = 0
-    start_time = time.time()
-    while time.time() - start_time < duration:
-        results = random.choices(
-            [Fore.GREEN + "Success", Fore.RED + "Failure"],
+
+    for _ in range(amount):
+        result = random.choices(
+            [Fore.GREEN + "[+] Success.", Fore.RED + "[-] Failure."],
             weights=[7, 3],
             k=1
-        )
-        print(results[0])
-        if "Success" in results:
+        )[0]
+        print(result)
+        if "[+] Success." in result:
             success_count += 1
         else:
             failure_count += 1
@@ -53,27 +52,35 @@ def random_success_failure():
 
     return success_count, failure_count
 
-def continue_prompt():
-    while True:
-        continue_choice = input(Fore.GREEN + "Do you want to continue? (y/n): ").strip().lower()
-        if continue_choice in ['y', 'yes']:
-            return True
-        elif continue_choice in ['n', 'no']:
-            return False
-        else:
-            print(Fore.RED + "Invalid input! Please enter 'y' or 'n'.")
+def display_server_busy_timer(seconds):
+    print(Fore.RED + "Server Busy, Please wait ...", end=" ")
+    for remaining in range(seconds, 0, -1):
+        print(f"[{remaining} Sec]", end="\r")
+        time.sleep(1)
+    print()  # Move to the next line after timer ends
+
+def show_timer():
+    print(Fore.YELLOW + "Request awaiting approval.")
+    for i in range(10, 0, -1):
+        print(Fore.YELLOW + f"Time remaining: {i} seconds", end="\r")
+        time.sleep(1)
+    print()
 
 def sms_bomber():
     while True:
         phone_number = input(Fore.GREEN + "Enter Phone Number (912xxx2345): ")
         if len(phone_number) == 10 and phone_number.isdigit():
+            amount_of_requests = int(input(Fore.GREEN + "Enter amount of requests: "))
+
+            display_server_busy_timer(random.randint(15, 45))
+
             print(Fore.GREEN + "Messaging...")
             time.sleep(random.randint(5, 20))
             
-            random_success_failure()
+            random_success_failure(amount_of_requests)
+            show_timer()  # Show timer after requests
             
-            if not continue_prompt():
-                break
+            break  # Exit the loop to return to the main menu
         else:
             print(Fore.RED + "Invalid phone number! Please enter a 10-digit number.")
 
@@ -81,13 +88,17 @@ def call_bomber():
     while True:
         phone_number = input(Fore.GREEN + "Enter Phone Number (912xxx2345) for Call: ")
         if len(phone_number) == 10 and phone_number.isdigit():
+            amount_of_requests = int(input(Fore.GREEN + "Enter amount of requests: "))
+
+            display_server_busy_timer(random.randint(15, 45))
+
             print(Fore.GREEN + "Calling...")
             time.sleep(random.randint(5, 20))
             
-            random_success_failure()
+            random_success_failure(amount_of_requests)
+            show_timer()  # Show timer after requests
             
-            if not continue_prompt():
-                break
+            break  # Exit the loop to return to the main menu
         else:
             print(Fore.RED + "Invalid phone number! Please enter a 10-digit number.")
 
@@ -95,13 +106,17 @@ def instagram_reporter():
     while True:
         username = input(Fore.GREEN + "Enter Instagram Username (@TechSino): ")
         if username.startswith('@') and len(username) > 1:
+            amount_of_requests = int(input(Fore.GREEN + "Enter amount of requests: "))
+
+            display_server_busy_timer(random.randint(15, 45))
+
             print(Fore.GREEN + "Reporting...")
             time.sleep(random.randint(5, 20))
             
-            random_success_failure()
+            random_success_failure(amount_of_requests)
+            show_timer()  # Show timer after requests
             
-            if not continue_prompt():
-                break
+            break  # Exit the loop to return to the main menu
         else:
             print(Fore.RED + "Invalid username! Please enter a valid Instagram username starting with '@'.")
 
@@ -109,13 +124,17 @@ def rubika_reporter():
     while True:
         username = input(Fore.GREEN + "Enter RUBIKA Username (@TechSino): ")
         if username.startswith('@') and len(username) > 1:
+            amount_of_requests = int(input(Fore.GREEN + "Enter amount of requests: "))
+
+            display_server_busy_timer(random.randint(15, 45))
+
             print(Fore.GREEN + "Reporting...")
             time.sleep(random.randint(5, 20))
             
-            random_success_failure()
+            random_success_failure(amount_of_requests)
+            show_timer()  # Show timer after requests
             
-            if not continue_prompt():
-                break
+            break  # Exit the loop to return to the main menu
         else:
             print(Fore.RED + "Invalid username! Please enter a valid RUBIKA username starting with '@'.")
 
