@@ -3,7 +3,6 @@ import random
 import time
 from colorama import init, Fore
 
-# Initialize colorama
 init(autoreset=True)
 
 def clear_screen():
@@ -22,10 +21,10 @@ def display_art():
 
 def verify_password():
     valid_passwords = ["techsino"]
-    for attempt in range(2):  # Only show busy message for the first two attempts
+    for attempt in range(2):
         if attempt == 0:
             print(Fore.RED + "Server Busy, Please wait ...")
-            time.sleep(random.randint(0, 5))  # Random wait time between 0 to 5 seconds
+            time.sleep(random.randint(0, 5))
         user_input = input(Fore.GREEN + "Please enter the password to continue: ")
         if user_input in valid_passwords:
             return True
@@ -34,16 +33,14 @@ def verify_password():
     return False
 
 def random_success_failure():
-    # Randomly select duration between 30 to 90 seconds
     duration = random.randint(30, 90)
     success_count = 0
     failure_count = 0
-    start_time = time.time()  # Record the start time
-    while time.time() - start_time < duration:  # Loop for the specified duration
-        # Generate random choices with more successes than failures
+    start_time = time.time()
+    while time.time() - start_time < duration:
         results = random.choices(
             [Fore.GREEN + "Success", Fore.RED + "Failure"],
-            weights=[7, 3],  # More successes than failures
+            weights=[7, 3],
             k=1
         )
         print(results[0])
@@ -52,7 +49,7 @@ def random_success_failure():
         else:
             failure_count += 1
         
-        time.sleep(0.5)  # Adjust the speed of the loop
+        time.sleep(0.5)
 
     return success_count, failure_count
 
@@ -71,14 +68,12 @@ def sms_bomber():
         phone_number = input(Fore.GREEN + "Enter Phone Number (912xxx2345): ")
         if len(phone_number) == 10 and phone_number.isdigit():
             print(Fore.GREEN + "Messaging...")
-            time.sleep(random.randint(5, 20))  # Random wait time between 5 to 20 seconds
+            time.sleep(random.randint(5, 20))
             
-            # Start the random success/failure loop
-            random_success_failure()  # This will run for a random duration
+            random_success_failure()
             
-            # Prompt for continuation without showing summary
             if not continue_prompt():
-                break  # Exit if the user does not want to continue
+                break
         else:
             print(Fore.RED + "Invalid phone number! Please enter a 10-digit number.")
 
@@ -87,51 +82,44 @@ def call_bomber():
         phone_number = input(Fore.GREEN + "Enter Phone Number (912xxx2345) for Call: ")
         if len(phone_number) == 10 and phone_number.isdigit():
             print(Fore.GREEN + "Calling...")
-            time.sleep(random.randint(5, 20))  # Random wait time between 5 to 20 seconds
+            time.sleep(random.randint(5, 20))
             
-            # Start the random success/failure loop
-            random_success_failure()  # This will run for a random duration
+            random_success_failure()
             
-            # Prompt for continuation without showing summary
             if not continue_prompt():
-                break  # Exit if the user does not want to continue
+                break
         else:
             print(Fore.RED + "Invalid phone number! Please enter a 10-digit number.")
 
 def instagram_reporter():
     while True:
         username = input(Fore.GREEN + "Enter Instagram Username (@TechSino): ")
-        if username.startswith('@') and len(username) > 1:  # Basic validation for the username
+        if username.startswith('@') and len(username) > 1:
             print(Fore.GREEN + "Reporting...")
-            time.sleep(random.randint(5, 20))  # Random wait time between 5 to 20 seconds
+            time.sleep(random.randint(5, 20))
             
-            # Start the random success/failure loop
-            random_success_failure()  # This will run for a random duration
+            random_success_failure()
             
-            # Prompt for continuation without showing summary
             if not continue_prompt():
-                break  # Exit if the user does not want to continue
+                break
         else:
             print(Fore.RED + "Invalid username! Please enter a valid Instagram username starting with '@'.")
 
 def rubika_reporter():
     while True:
         username = input(Fore.GREEN + "Enter RUBIKA Username (@TechSino): ")
-        if username.startswith('@') and len(username) > 1:  # Basic validation for the username
+        if username.startswith('@') and len(username) > 1:
             print(Fore.GREEN + "Reporting...")
-            time.sleep(random.randint(5, 20))  # Random wait time between 5 to 20 seconds
+            time.sleep(random.randint(5, 20))
             
-            # Start the random success/failure loop
-            random_success_failure()  # This will run for a random duration
+            random_success_failure()
             
-            # Prompt for continuation without showing summary
             if not continue_prompt():
-                break  # Exit if the user does not want to continue
+                break
         else:
             print(Fore.RED + "Invalid username! Please enter a valid RUBIKA username starting with '@'.")
 
 def show_menu():
-    # Dictionary to hold information about each option
     option_info = {
         "1": "You have accessed SMS BOMBER.",
         "2": "You have accessed CALL BOMBER.",
@@ -154,11 +142,11 @@ def show_menu():
 
         if choice in option_info:
             print(Fore.RED + "Server Busy, Please wait ...")
-            time.sleep(random.randint(0, 5))  # Random wait time between 0 to 5 seconds
+            time.sleep(random.randint(0, 5))
             
-            clear_screen()  # Clear the menu
-            display_art()  # Display the ASCII art
-            print(Fore.GREEN + option_info[choice])  # Show corresponding message
+            clear_screen()
+            display_art()
+            print(Fore.GREEN + option_info[choice])
             if choice == "1":
                 sms_bomber()
             elif choice == "2":
@@ -173,7 +161,6 @@ def show_menu():
         else:
             print(Fore.GREEN + "Invalid option! Please try again.")
 
-# Start the program
 clear_screen()  
 display_art()  
 if verify_password():  
