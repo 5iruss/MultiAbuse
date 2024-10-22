@@ -3,14 +3,20 @@ import random
 import time
 from colorama import init, Fore
 
+# Initialize colorama
 init(autoreset=True)
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def display_art():
+def typing_effect(text, delay=0.005):
+    for char in text:
+        print(Fore.RED + char, end='', flush=True)
+        time.sleep(delay)
+    print()
+
+def display_art(animated=True):
     art = r"""
-    
     ███        ▄████████  ▄████████    ▄█    █▄    
 ▀█████████▄   ███    ███ ███    ███   ███    ███   
    ▀███▀▀██   ███    █▀  ███    █▀    ███    ███   
@@ -27,15 +33,18 @@ def display_art():
              ███ ███  ███   ███ ███    ███ 
        ▄█    ███ ███  ███   ███ ███    ███ 
      ▄████████▀  █▀    ▀█   █▀   ▀██████▀ 
-     """
-    print(Fore.RED + art)
+    """
+    if animated:
+        typing_effect(art)
+    else:
+        print(Fore.RED + art)
 
 def verify_password():
     valid_passwords = ["techsino"]
     for attempt in range(2):
         if attempt == 0:
-            print(Fore.RED + "Server Busy, Please wait ...")
-            time.sleep(random.randint(0, 5))
+            clear_screen()
+            display_art(animated=True)
         user_input = input(Fore.GREEN + "Please enter the password to continue: ")
         if user_input in valid_passwords:
             return True
@@ -78,6 +87,8 @@ def show_timer():
     print()
 
 def sms_bomber():
+    clear_screen()  # Clear screen for SMS Bomber
+    display_art(animated=False)  # Show ASCII art
     while True:
         phone_number = input(Fore.GREEN + "Enter Phone Number (912xxx2345): ")
         if len(phone_number) == 10 and phone_number.isdigit():
@@ -90,12 +101,13 @@ def sms_bomber():
             
             random_success_failure(amount_of_requests)
             show_timer()
-            
             break
         else:
             print(Fore.RED + "Invalid phone number! Please enter a 10-digit number.")
 
 def call_bomber():
+    clear_screen()  # Clear screen for Call Bomber
+    display_art(animated=False)  # Show ASCII art
     while True:
         phone_number = input(Fore.GREEN + "Enter Phone Number (912xxx2345) for Call: ")
         if len(phone_number) == 10 and phone_number.isdigit():
@@ -108,12 +120,13 @@ def call_bomber():
             
             random_success_failure(amount_of_requests)
             show_timer()
-            
             break
         else:
             print(Fore.RED + "Invalid phone number! Please enter a 10-digit number.")
 
 def instagram_reporter():
+    clear_screen()  # Clear screen for Instagram Reporter
+    display_art(animated=False)  # Show ASCII art
     while True:
         username = input(Fore.GREEN + "Enter Instagram Username (@TechSino): ")
         if username.startswith('@') and len(username) > 1:
@@ -126,12 +139,13 @@ def instagram_reporter():
             
             random_success_failure(amount_of_requests)
             show_timer()
-            
             break
         else:
             print(Fore.RED + "Invalid username! Please enter a valid Instagram username starting with '@'.")
 
 def rubika_reporter():
+    clear_screen()  # Clear screen for Rubika Reporter
+    display_art(animated=False)  # Show ASCII art
     while True:
         username = input(Fore.GREEN + "Enter RUBIKA Username (@TechSino): ")
         if username.startswith('@') and len(username) > 1:
@@ -144,7 +158,6 @@ def rubika_reporter():
             
             random_success_failure(amount_of_requests)
             show_timer()
-            
             break
         else:
             print(Fore.RED + "Invalid username! Please enter a valid RUBIKA username starting with '@'.")
@@ -154,46 +167,31 @@ def show_menu():
         "1": "You have accessed SMS BOMBER.",
         "2": "You have accessed CALL BOMBER.",
         "3": "You have accessed INSTAGRAM REPORTER.",
-        "4": "You have accessed RUBIKA REPORTER."
+        "4": "You have accessed RUBIKA REPORTER.",
+        "5": "Exit."
     }
-
     while True:
         clear_screen()
-        display_art()
-        print(Fore.RED + "Welcome to the Program!")  
-        print(Fore.GREEN + "\n--- Main Menu ---")
-        print(Fore.GREEN + "1. SMS BOMBER")
-        print(Fore.GREEN + "2. CALL BOMBER")
-        print(Fore.GREEN + "3. INSTAGRAM REPORTER")
-        print(Fore.GREEN + "4. RUBIKA REPORTER")
-        print(Fore.GREEN + "5. Exit")
+        display_art(animated=False)  # Show ASCII art on menu
+        print(Fore.GREEN + "Select an option:")
+        for key, value in option_info.items():
+            print(Fore.GREEN + f"{key}. {value}")
+        choice = input(Fore.GREEN + "Enter your choice: ")
 
-        choice = input(Fore.GREEN + "Please select an option: ")
-
-        if choice in option_info:
-            print(Fore.RED + "Server Busy, Please wait ...")
-            time.sleep(random.randint(0, 5))
-            
-            clear_screen()
-            display_art()
-            print(Fore.GREEN + option_info[choice])
-            if choice == "1":
-                sms_bomber()
-            elif choice == "2":
-                call_bomber()
-            elif choice == "3":
-                instagram_reporter()
-            elif choice == "4":
-                rubika_reporter()
+        if choice == "1":
+            sms_bomber()
+        elif choice == "2":
+            call_bomber()
+        elif choice == "3":
+            instagram_reporter()
+        elif choice == "4":
+            rubika_reporter()
         elif choice == "5":
-            print(Fore.GREEN + "Exiting the program.")
+            print(Fore.YELLOW + "Exiting program...")
             break
         else:
-            print(Fore.GREEN + "Invalid option! Please try again.")
+            print(Fore.RED + "Invalid choice! Please select a valid option.")
 
-clear_screen()  
-display_art()  
-if verify_password():  
-    show_menu()  
-else:
-    print(Fore.RED + "Exiting the program due to incorrect password.")
+if __name__ == "__main__":
+    if verify_password():
+        show_menu()
