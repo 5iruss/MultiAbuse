@@ -73,7 +73,7 @@ def random_success_failure(amount):
     return success_count, failure_count
 
 def display_server_busy_timer(seconds):
-    print(Fore.RED + "Server Busy, Please wait ...", end=" ")
+    print(Fore.RED + "        Server Busy, Please wait...", end=" ")
     for remaining in range(seconds, 0, -1):
         print(f"[{remaining} Sec]", end="\r")
         time.sleep(1)
@@ -173,7 +173,7 @@ def ddos_ip_tool():
 
             display_server_busy_timer(random.randint(15, 45))
 
-            print(Fore.GREEN + f"Sending requests to IP {ip}...")
+            print(Fore.GREEN + f"DDoSing {ip}...")
             time.sleep(random.randint(5, 20))
             
             random_success_failure(amount_of_requests)
@@ -197,7 +197,7 @@ def show_menu():
         print(Fore.GREEN + "Select an option:")
         for key, value in option_info.items():
             print(Fore.GREEN + f"{key}. {value}")
-        choice = input(Fore.GREEN + "Enter your choice: ")
+        choice = input(Fore.GREEN + "\nEnter your choice: ")
 
         if choice == "1":
             sms_bomber()
