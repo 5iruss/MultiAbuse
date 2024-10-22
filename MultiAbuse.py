@@ -67,7 +67,7 @@ def display_server_busy_timer(seconds):
     for remaining in range(seconds, 0, -1):
         print(f"[{remaining} Sec]", end="\r")
         time.sleep(1)
-    print()  # Move to the next line after timer ends
+    print()
 
 def show_timer():
     print(Fore.YELLOW + "Request awaiting approval.")
@@ -88,9 +88,9 @@ def sms_bomber():
             time.sleep(random.randint(5, 20))
             
             random_success_failure(amount_of_requests)
-            show_timer()  # Show timer after requests
+            show_timer()
             
-            break  # Exit the loop to return to the main menu
+            break
         else:
             print(Fore.RED + "Invalid phone number! Please enter a 10-digit number.")
 
@@ -106,9 +106,9 @@ def call_bomber():
             time.sleep(random.randint(5, 20))
             
             random_success_failure(amount_of_requests)
-            show_timer()  # Show timer after requests
+            show_timer()
             
-            break  # Exit the loop to return to the main menu
+            break
         else:
             print(Fore.RED + "Invalid phone number! Please enter a 10-digit number.")
 
@@ -124,9 +124,9 @@ def instagram_reporter():
             time.sleep(random.randint(5, 20))
             
             random_success_failure(amount_of_requests)
-            show_timer()  # Show timer after requests
+            show_timer()
             
-            break  # Exit the loop to return to the main menu
+            break
         else:
             print(Fore.RED + "Invalid username! Please enter a valid Instagram username starting with '@'.")
 
@@ -142,9 +142,9 @@ def rubika_reporter():
             time.sleep(random.randint(5, 20))
             
             random_success_failure(amount_of_requests)
-            show_timer()  # Show timer after requests
+            show_timer()
             
-            break  # Exit the loop to return to the main menu
+            break
         else:
             print(Fore.RED + "Invalid username! Please enter a valid RUBIKA username starting with '@'.")
 
