@@ -166,7 +166,7 @@ def ddos_ip_tool():
     clear_screen()
     display_art(animated=False)
     while True:
-        ip_address = input(Fore.GREEN + "Enter IP Address (e.g., 192.168.1.1 or 2001:0db8::1): ")
+        ip_address = input(Fore.GREEN + "Enter IP Address (192.168.1.1): ")
         try:
             ip = ipaddress.ip_address(ip_address)
             amount_of_requests = int(input(Fore.GREEN + "Enter amount of requests: "))
